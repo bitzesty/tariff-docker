@@ -1,0 +1,68 @@
+db:
+  image: "orchardup/mysql"
+  ports:
+    - "127.0.0.1:3306:3306"
+  environment:
+    MYSQL_DATABASE: "tariff_development"
+    MYSQL_USER: "tariff"
+    MYSQL_PASSWORD: "tariff"
+redis:
+  image: "dockerfile/redis"
+  ports:
+    - "6379:6379"
+elasticsearch:
+  image: "dockerfile/elasticsearch"
+  ports:
+    - "9200:9200"
+backend:
+  image: "bitzesty/trade-tariff-backend:0.1"
+  command: "/sbin/my_init -- bundle exec foreman start"
+  volumes:
+    - "./trade-tariff-backend:/trade-tariff-backend"
+  ports:
+    - "3018:3018"
+  links:
+    - "db"
+    - "redis"
+    - "elasticsearch"
+  hostname: "tariff-api.dev.gov.uk"
+  domainname: "tariff-api.dev.gov.uk"
+  environment:
+    RAILS_ENV: "development"
+
+admindb:
+  image: "orchardup/mysql"
+  ports:
+    - "3306"
+  environment:
+    MYSQL_DATABASE: "tariff_admin_development"
+    MYSQL_USER: "tariff_admin"
+    MYSQL_PASSWORD: "tariff_admin"
+admin:
+  build: "./trade-tariff-admin"
+  command: "/sbin/my_init -- bundle exec unicorn -p 3046"
+  volumes:
+    - "./trade-tariff-admin:/trade-tariff-admin"
+  ports:
+    - "3046:3046"
+  links:
+    - "admindb"
+    - "backend"
+  hostname: "tariff-admin.dev.gov.uk"
+  domainname: "tariff-admin.dev.gov.uk"
+  environment:
+    RAILS_ENV: "development"
+
+frontend:
+  build: "./trade-tariff-frontend"
+  command: "/sbin/my_init -- bundle exec unicorn -p 3017"
+  volumes:
+    - "./trade-tariff-frontend:/trade-tariff-frontend"
+  ports:
+    - "3017:3017"
+  links:
+    - "backend"
+  hostname: "tariff.dev.gov.uk"
+  domainname: "tariff.dev.gov.uk"
+  environment:
+    RAILS_ENV: "development"
