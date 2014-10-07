@@ -16,7 +16,7 @@ elasticsearch:
     - "9200:9200"
 backend:
   image: "bitzesty/trade-tariff-backend:0.1"
-  command: "/sbin/my_init -- bundle exec whenever --update-crontab && bundle exec foreman start"
+  command: "/sbin/my_init -- ./startup.sh"
   volumes:
     - "./trade-tariff-backend:/trade-tariff-backend"
   ports:
