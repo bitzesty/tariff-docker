@@ -27,3 +27,19 @@ We'll be using [docker](https://www.docker.com/) and [fig](http://www.fig.sh/) t
 4. Start containers: `fig up -d --no-recreate`
   - `-d` option will run them in background
   - `--no-recreate` is important so fig doesn't recreate environments (included DBs)
+
+You can start / stop all containers using `fig start` / `fig stop`
+
+## Setting up apps
+### Backend
+- Run migrations and seeds
+  ```
+  ~/tariff-docker$ fig run backend bundle exec rake db:migrate db:seed
+  ```
+  For more info see https://github.com/bitzesty/trade-tariff-backend#load-database
+
+### Admin
+- Run migrations and seeds
+  ```
+  ~/tariff-docker$ fig run admin bundle exec rake db:migrate db:seed
+  ```
