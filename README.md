@@ -33,6 +33,7 @@ You can start / stop all containers using `fig start` / `fig stop`
 ## Setting up apps
 ### Backend
 - Run migrations and seeds
+
   ```
   ~/tariff-docker$ fig run backend bundle exec rake db:migrate db:seed
   ```
@@ -40,6 +41,7 @@ You can start / stop all containers using `fig start` / `fig stop`
 
 ### Admin
 - Run migrations and seeds
+
   ```
   ~/tariff-docker$ fig run admin bundle exec rake db:migrate db:seed
   ```
