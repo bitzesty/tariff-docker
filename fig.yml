@@ -40,7 +40,7 @@ admindb:
     MYSQL_PASSWORD: "tariff_admin"
 admin:
   build: "./trade-tariff-admin"
-  command: "/sbin/my_init -- bundle exec unicorn -p 3046"
+  command: "/sbin/my_init -- ./startup.sh"
   volumes:
     - "./trade-tariff-admin:/trade-tariff-admin"
   ports:
