@@ -1,11 +1,10 @@
 db:
-  image: "orchardup/mysql"
+  image: "tutum/mysql:5.5"
   ports:
     - "127.0.0.1:3306:3306"
   environment:
-    MYSQL_DATABASE: "tariff_development"
     MYSQL_USER: "tariff"
-    MYSQL_PASSWORD: "tariff"
+    MYSQL_PASS: "tariff"
 redis:
   image: "dockerfile/redis"
   ports:
@@ -15,7 +14,7 @@ elasticsearch:
   ports:
     - "9200:9200"
 backend:
-  image: "bitzesty/trade-tariff-backend:0.1"
+  image: "bitzesty/trade-tariff-backend:0.2"
   command: "/sbin/my_init -- ./startup.sh"
   volumes:
     - "./trade-tariff-backend:/trade-tariff-backend"
@@ -31,13 +30,12 @@ backend:
     RAILS_ENV: "development"
 
 admindb:
-  image: "orchardup/mysql"
+  image: "tutum/mysql:5.5"
   ports:
     - "3306"
   environment:
-    MYSQL_DATABASE: "tariff_admin_development"
     MYSQL_USER: "tariff_admin"
-    MYSQL_PASSWORD: "tariff_admin"
+    MYSQL_PASS: "tariff_admin"
 admin:
   build: "./trade-tariff-admin"
   command: "/sbin/my_init -- ./startup.sh"
