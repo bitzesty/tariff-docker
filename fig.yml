@@ -14,7 +14,7 @@ elasticsearch:
   ports:
     - "9200:9200"
 backend:
-  image: "bitzesty/trade-tariff-backend:0.2"
+  image: "bitzesty/trade-tariff-backend:0.3"
   command: "/sbin/my_init -- ./startup.sh"
   volumes:
     - "./trade-tariff-backend:/trade-tariff-backend"
