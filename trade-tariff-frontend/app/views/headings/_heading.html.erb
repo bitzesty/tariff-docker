@@ -1,0 +1,15 @@
+<% if heading.leaf? %>
+<dt class="heading-code" title="Heading code"><%= heading.display_short_code %></dt>
+<dd class="heading-description">
+<% else %>
+<dt class='heading-subtitle'><%= heading %></dt>
+<dd class="subtitle-description">
+<% end %>
+  <% if heading.leaf? %>
+    <%= link_to heading, heading_path(heading) %>
+  <% else %>
+  <dl class='chapter-headings'>
+    <%= render heading.children %>
+  </dl>
+  <% end %>
+</dd>
