@@ -8,12 +8,22 @@ We'll be using [docker](https://www.docker.com/) and [fig](http://www.fig.sh/) t
   ~$ git clone https://github.com/bitzesty/tariff-docker.git
   ```
 
-2. Clone backend, admin and frontend. All on `tariff-docker` branch. You'll be working inside this project's folder as you'll use it's `fig.yml` to build the containers.
+2. Sync tariff subtrees
+
+  Subtrees were added on [PR #3](https://github.com/bitzesty/tariff-docker/pull/3)
+
   ```
-  ~$ cd tariff-docker
-  ~/tariff-docker$ git clone -b tariff-docker https://github.com/bitzesty/trade-tariff-backend.git
-  ~/tariff-docker$ git clone -b tariff-docker https://github.com/bitzesty/trade-tariff-admin.git
-  ~/tariff-docker$ git clone -b tariff-docker https://github.com/bitzesty/trade-tariff-frontend.git
+  # make sure we have tariff repos as remotes
+  ~$ git remote add -f trade-tariff-backend git@github.com:bitzesty/trade-tariff-backend.git
+  ~$ git remote add -f trade-tariff-admin git@github.com:bitzesty/trade-tariff-admin.git
+  ~$ git remote add -f trade-tariff-frontend git@github.com:bitzesty/trade-tariff-frontend.git
+  ```
+
+  ```
+  # pull from tariff remotes on tariff-docker branch
+  ~$ git pull -s subtree trade-tariff-backend tariff-docker
+  ~$ git pull -s subtree trade-tariff-admin tariff-docker
+  ~$ git pull -s subtree trade-tariff-frontend tariff-docker
   ```
 
 ## Setting up docker containers
