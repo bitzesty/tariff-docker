@@ -1,0 +1,21 @@
+development: &default
+  adapter: mysql2
+  encoding: utf8
+  reconnect: true
+  database: tariff_admin_development
+  single_threaded: true
+  username: tariff_admin
+  password: tariff_admin
+  <% if ENV['ADMINDB_1_PORT_3306_TCP_ADDR'].present? %>
+  host: <%= ENV['ADMINDB_1_PORT_3306_TCP_ADDR'] %>
+  <% end %>
+  <% if ENV['ADMINDB_1_PORT_3306_TCP_PORT'].present? %>
+  port: <%= ENV['ADMINDB_1_PORT_3306_TCP_PORT'] %>
+  <% end %>
+
+test:
+  <<: *default
+  database: tariff_admin_test
+
+docker:
+  <<: *default

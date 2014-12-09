@@ -1,0 +1,34 @@
+<h2>Tariff Updates</h2>
+
+<table class='table table-bordered table-striped table-condensed table-tariff-updates'>
+  <thead>
+    <tr>
+      <th class='span2'>Update type</th>
+      <th class='span2'>File name</th>
+      <th class='span2'>State</th>
+      <th class='span2'>Created at</th>
+      <th class='span2'>Applied at</th>
+      <th class='span2'>File size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tariff_updates.each do |tariff_update| %>
+      <tr id='<%= dom_id(tariff_update) %>'>
+        <td><%= tariff_update.update_type %></td>
+        <td><%= tariff_update.filename %></td>
+        <td>
+          <%= tariff_update.state %>
+          <% if tariff_update.exception_class.present? %>
+            <%= render "exception", tariff_update: tariff_update %>
+          <% end %>
+          <% if tariff_update.conformance_errors.present? %>
+            <%= render "conformance_errors", tariff_update: tariff_update %>
+          <% end %>
+        </td>
+        <td><%= l tariff_update.created_at, format: :tariff %></td>
+        <td><%= l(tariff_update.applied_at, format: :tariff) if tariff_update.applied_at %></td>
+        <td><%= number_to_human_size(tariff_update.filesize) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
