@@ -44,16 +44,17 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   redis_url = ENV["REDIS_1_PORT_6379_TCP"] || "redis://localhost:6379"
-  Redis::Classy.db = Redis.new(url: redis_url)
+
+  redis = Redis.new(:db => 15, url: redis_url)
+  RedisLockDb.redis = redis
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
-    Redis::Classy.flushdb
+    redis.flushdb
   end
 
   config.after(:suite) do
-    Redis::Classy.flushdb
-    Redis::Classy.quit
+    redis.flushdb
   end
 
   config.before(:each) do
