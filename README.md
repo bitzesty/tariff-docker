@@ -38,7 +38,9 @@ We'll be using [docker](https://www.docker.com/) and [fig](http://www.fig.sh/) t
   - `-d` option will run them in background
   - `--no-recreate` is important so fig doesn't recreate environments (included DBs)
 
-You can start / stop all containers using `fig start` / `fig stop`
+  You can start / stop all containers using `fig start` / `fig stop`
+
+  **Note:** It's important you start all containers together because they need to share environment variables at startup. Without them, you'll start to see `No route to host tariff-api.dev.gov.uk`
 
 ## Setting up apps
 ### Backend
