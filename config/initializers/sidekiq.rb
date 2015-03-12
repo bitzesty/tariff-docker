@@ -2,8 +2,10 @@
 
 debug_redis = false
 
-url = if ENV['REDIS_1_PORT_6379_TCP'].present?
-    ENV['REDIS_1_PORT_6379_TCP']
+url = if ENV['REDIS_1_PORT_6379_TCP_ADDR'].present?
+    address = ENV['REDIS_1_PORT_6379_TCP_ADDR']
+    port = ENV['REDIS_1_PORT_6379_TCP_PORT']
+    "redis://#{address}:#{port}"
   else
     "redis://localhost:6379"
   end
