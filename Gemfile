@@ -33,6 +33,7 @@ gem "sass-rails", "~> 5.0"
 gem "therubyracer", "~> 0.12"
 gem "uglifier", "~> 2.7"
 gem "responders", "~> 2.0"
+gem "foreman", "~> 0.77"
 
 group :development do
   gem "capistrano", "~> 3.4"
