@@ -116,7 +116,7 @@ GEM
       thor (~> 0.19.1)
     forgery (0.5.0)
     formatador (0.2.5)
-    gds-sso (10.0.0)
+    gds-sso (9.3.0)
       multi_json (~> 1.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
@@ -282,9 +282,7 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
     sequel (4.3.0)
-    sequel-rails (0.9.10)
-      actionpack (>= 3.2.0)
-      activemodel
+    sequel-rails (0.7.0)
       railties (>= 3.2.0)
       sequel (>= 3.28, < 5.0)
     sexp_processor (4.5.0)
@@ -370,7 +368,7 @@ DEPENDENCIES
   fakefs
   foreman (~> 0.77)
   forgery
-  gds-sso (~> 10.0)
+  gds-sso (= 9.3.0)
   guard-rspec
   hashie (~> 3.4)
   json_expressions
@@ -380,7 +378,7 @@ DEPENDENCIES
   mysql2 (~> 0.3)
   newrelic_rpm
   nokogiri (~> 1.6)
-  plek (~> 1.10)
+  plek (~> 1.8)
   pry-nav
   pry-rails
   rabl (~> 0.11)
@@ -390,7 +388,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sentry-raven!
   sequel (~> 4.3.0)
-  sequel-rails (~> 0.9)
+  sequel-rails (= 0.7.0)
   shoulda-matchers (~> 2.8)
   sidekiq (~> 2.17)
   simplecov
