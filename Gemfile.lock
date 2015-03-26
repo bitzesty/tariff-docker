@@ -108,7 +108,7 @@ GEM
       plek
       rack-cache
       rest-client (~> 1.7.3)
-    gds-sso (10.0.0)
+    gds-sso (9.3.0)
       multi_json (~> 1.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
@@ -276,12 +276,10 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    sequel (4.20.0)
-    sequel-rails (0.9.10)
-      actionpack (>= 3.2.0)
-      activemodel
+    sequel (4.0.0)
+    sequel-rails (0.5.1)
       railties (>= 3.2.0)
-      sequel (>= 3.28, < 5.0)
+      sequel (>= 3.28, < 4.1.0)
     sexp_processor (4.5.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
@@ -345,7 +343,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1)
   factory_girl_rails
   gds-api-adapters (~> 18.0)
-  gds-sso (~> 10.0)
+  gds-sso (= 9.3.0)
   govspeak (~> 3.3)
   govuk_admin_template (~> 2.1)
   her (= 0.6.8)
@@ -353,7 +351,7 @@ DEPENDENCIES
   kaminari (~> 0.16)
   logstasher (~> 0.6)
   mysql2 (~> 0.3)
-  plek (~> 1.10)
+  plek (>= 1.0.0)
   pry-rails
   pundit (= 0.3.0)
   rails (= 4.2.0)
@@ -361,8 +359,8 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sentry-raven!
-  sequel (~> 4.20)
-  sequel-rails (~> 0.9)
+  sequel (= 4.0.0)
+  sequel-rails (= 0.5.1)
   shoulda-matchers
   simple_form (~> 3.1)
   simplecov

@@ -3,8 +3,8 @@ source "https://rubygems.org"
 gem "rails", "4.2.0"
 
 gem "mysql2", "~> 0.3"
-gem "sequel", "~> 4.20"
-gem "sequel-rails", "~> 0.9"
+gem "sequel", "4.0.0"
+gem "sequel-rails", "0.5.1"
 gem "her", "0.6.8"
 gem "pundit", "0.3.0"
 
@@ -14,9 +14,9 @@ gem "govspeak", "~> 3.3"
 
 gem "govuk_admin_template", "~> 2.1"
 
-gem "gds-sso", "~> 10.0"
+gem "gds-sso", "9.3.0"
 gem "gds-api-adapters", "~> 18.0"
-gem "plek", "~> 1.10"
+gem "plek", ">= 1.0.0"
 gem "addressable", "~> 2.3"
 
 gem "unicorn", "~> 4.8"
