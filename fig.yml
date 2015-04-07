@@ -24,6 +24,7 @@ backend:
     - "db"
     - "redis"
     - "elasticsearch"
+    - "signonotron2"
   hostname: "tariff-api.dev.gov.uk"
   domainname: "tariff-api.dev.gov.uk"
   environment:
@@ -46,6 +47,7 @@ admin:
   links:
     - "admindb"
     - "backend"
+    - "signonotron2"
   hostname: "tariff-admin.dev.gov.uk"
   domainname: "tariff-admin.dev.gov.uk"
   environment:
@@ -62,5 +64,30 @@ frontend:
     - "backend"
   hostname: "tariff.dev.gov.uk"
   domainname: "tariff.dev.gov.uk"
+  environment:
+    RAILS_ENV: "development"
+
+signonotron2db:
+  image: "tutum/mysql:5.5"
+  ports:
+    - "3306"
+  environment:
+    MYSQL_USER: signonotron2
+    MYSQL_PASS: signonotron2
+signonotron2:
+  build: "./signonotron2"
+  command: "/sbin/my_init -- ./startup.sh"
+  volumes:
+    - "./signonotron2:/signonotron2"
+    - "./trade-tariff-admin:/trade-tariff-admin"
+    - "./trade-tariff-backend:/trade-tariff-backend"
+  ports:
+    - "3016:3016"
+  links:
+    - "signonotron2db"
+    - "backend"
+    - "admin"
+  hostname: "signon.dev.gov.uk"
+  domainname: "signon.dev.gov.uk"
   environment:
     RAILS_ENV: "development"

@@ -59,3 +59,14 @@ We'll be using [docker](https://www.docker.com/) and [fig](http://www.fig.sh/) t
   ```
   ~/tariff-docker$ fig run admin bundle exec rake db:create db:migrate db:seed
   ```
+
+### Signonotron2
+- Create DB, run migrations
+  ```
+  ~/tariff-docker$ fig run signonotron2 bundle exec rake db:create db:migrate
+  ```
+
+- Create a user
+  ```
+  ~/tariff-docker$ fig run signonotron2 bundle exec rake users:create name="docker" email="docker@bitzesty.com" applications="trade-tariff-admin,trade-tariff-backend"
+  ```
