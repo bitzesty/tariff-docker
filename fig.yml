@@ -85,8 +85,6 @@ signonotron2:
     - "3016:3016"
   links:
     - "signonotron2db"
-    - "backend"
-    - "admin"
   hostname: "signon.dev.gov.uk"
   domainname: "signon.dev.gov.uk"
   environment:
