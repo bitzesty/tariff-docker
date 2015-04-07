@@ -1,2 +1,0 @@
-class UnsupportedPermissionError < StandardError
-end
