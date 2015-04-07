@@ -1,0 +1,40 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+development: &development
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: signonotron2_development
+  pool: 5
+  username: signonotron2
+  password: signonotron2
+  <% if ENV['SIGNONOTRON2DB_1_PORT_3306_TCP_ADDR'].present? %>
+  host: <%= ENV['SIGNONOTRON2DB_1_PORT_3306_TCP_ADDR'] %>
+  <% end %>
+  <% if ENV['SIGNONOTRON2DB_1_PORT_3306_TCP_PORT'].present? %>
+  port: <%= ENV['SIGNONOTRON2DB_1_PORT_3306_TCP_PORT'] %>
+  <% end %>
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test: &test
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: signonotron2_test
+  pool: 5
+  username: signonotron2
+  password: signonotron2
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: halberd_production
+  pool: 5
+  username: halberd
+  password:

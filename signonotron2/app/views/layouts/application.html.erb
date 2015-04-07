@@ -1,0 +1,59 @@
+<% content_for :app_title, 'GOV.UK Signon' %>
+<% content_for :page_title, "#{yield(:title)} | GOV.UK Signon" %>
+<% content_for :head do %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= yield :content_for_head %>
+<% end %>
+
+<% if user_signed_in? && params[:controller] !~ %r{doorkeeper/} %>
+  <% content_for :navbar_items do %>
+    <%= nav_link 'Dashboard', root_path %>
+    <% if policy(User).index? %>
+      <%= nav_link 'Users', users_path %>
+    <% end %>
+    <% if policy(ApiUser).index? %>
+      <%= nav_link 'API Users', api_users_path %>
+    <% end %>
+    <% if policy(Doorkeeper::Application).index? %>
+      <%= nav_link 'Applications', doorkeeper_applications_path %>
+    <% end %>
+    <% if policy(Organisation).index? %>
+      <%= nav_link 'Organisations', organisations_path %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if user_signed_in? && params[:controller] !~ %r{doorkeeper/} %>
+  <% content_for :navbar_right do %>
+    <%= link_to current_user.name, user_link_target %>
+    &bull; <%= link_to 'Sign out', destroy_user_session_path %>
+  <% end %>
+<% end %>
+
+<% content_for :content do %>
+  <%- if notice %><div class="alert alert-success" role="alert"><%= notice %></div><% end -%>
+  <%- if alert %><div class="alert alert-danger" role="alert"><%= alert %></div><% end %>
+  <%= yield %>
+<% end %>
+
+<% content_for :footer_version, CURRENT_RELEASE_SHA %>
+
+<% content_for :body_end do %>
+  <%= yield :optional_javascripts if content_for?(:optional_javascripts) %>
+  <% if Rails.env.production? %>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-26179049-6', 'alphagov.co.uk');
+      ga('send', 'pageview');
+    </script>
+  <% end %>
+<% end %>
+
+<%# use the govuk_admin_template layout %>
+<%= render :template => 'layouts/govuk_admin_template' %>

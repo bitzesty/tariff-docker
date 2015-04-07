@@ -1,0 +1,67 @@
+#!/usr/bin/env ruby
+require_relative "../config/environment"
+
+def config_for_app(application_config_file)
+  lines = IO.read(application_config_file).split("\n")
+  config = {}
+  lines.each do |line|
+    next if line =~ Regexp.new(Regexp.escape("GDS::SSO.config do |config|"))
+    next if line =~ Regexp.new(/^end/)
+    next if line =~ Regexp.new(/^(\s)+?$/)
+    key = /config\.([^ ]+)/.match(line).to_a[1]
+    if /ENV\['[a-z_]+'\]/i.match(line)
+      # We've got a line like this:
+      #   config.oauth_id     = ENV['PUBLISHER_OAUTH_ID'] || "an_oauth_id"
+      # so extract "an_oauth_id":
+      value = /\|\| ["|'](.+)["|']/.match(line).to_a[1]
+    else
+      # We've got a line like this:
+      #   config.oauth_id     = 'an_oauth_id'
+      # so extract "an_oauth_id":
+      value = /=[\s]+?['|"]([^'"]+)['|"]/.match(line).to_a[1]
+    end
+    config[key] = value
+  end
+  config
+end
+
+def deverise_uri(uri)
+  uri.gsub(/[a-z]*.alphagov.co.uk/, "dev.gov.uk").gsub(/https:/, "http:")
+end
+
+def application_repo_name(application)
+  if application.name =~ /Content API/i
+    "govuk_content_api"
+  else
+    application.name.downcase.gsub(/\s/, '-')
+  end
+end
+
+def config_path_for_app(application)
+  if application.name =~ /Content API/i 
+    "../#{application_repo_name(application)}/config/gds_sso_config.rb"
+  else
+    "../#{application_repo_name(application)}/config/initializers/gds-sso.rb"
+  end
+end
+
+puts "Updating SSO config so that it works in development..."
+::Doorkeeper::Application.all.each do |application|
+  config_file = config_path_for_app(application)
+  if File.exists?(config_file)
+    local_config = config_for_app(config_file)
+
+    application.redirect_uri = deverise_uri(application.redirect_uri)
+    application.home_uri     = deverise_uri(application.home_uri)
+    application.uid          = local_config["oauth_id"]
+    application.secret       = local_config["oauth_secret"]
+    puts "Updating application #{application.name}"
+    begin
+      application.save!
+    rescue ActiveRecord::RecordInvalid => e
+      puts "ERROR Failed to update #{application.name} because: #{e.message}"
+    end
+  else
+    puts "WARNING Skipping #{application.name}, as it doesn't use gds-sso, is not checked out or the repo isn't \"#{application_repo_name(application)}\"."
+  end
+end
