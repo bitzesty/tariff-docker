@@ -1,4 +1,4 @@
 #!/bin/bash
 export RAILS_ENV=docker
 bundle install
-bundle exec unicorn -p 3046
+GDS_SSO_STRATEGY=real bundle exec unicorn -p 3046
