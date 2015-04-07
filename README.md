@@ -17,6 +17,7 @@ We'll be using [docker](https://www.docker.com/) and [fig](http://www.fig.sh/) t
   ~$ git remote add -f trade-tariff-backend git@github.com:bitzesty/trade-tariff-backend.git
   ~$ git remote add -f trade-tariff-admin git@github.com:bitzesty/trade-tariff-admin.git
   ~$ git remote add -f trade-tariff-frontend git@github.com:bitzesty/trade-tariff-frontend.git
+  ~$ git remote add -f signonotron2 git@github.com:bitzesty/signonotron2.git
   ```
 
   ```
@@ -24,6 +25,7 @@ We'll be using [docker](https://www.docker.com/) and [fig](http://www.fig.sh/) t
   ~$ git pull -s subtree trade-tariff-backend tariff-docker
   ~$ git pull -s subtree trade-tariff-admin tariff-docker
   ~$ git pull -s subtree trade-tariff-frontend tariff-docker
+  ~$ git pull -s subtree signonotron2 tariff-docker
   ```
 
 ## Setting up docker containers
