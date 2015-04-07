@@ -1,0 +1,43 @@
+<% content_for :title, "Dashboard" %>
+<div class="page-title">
+  <h1>Welcome to GOV.UK</h1>
+</div>
+<div class="well">
+<div class="row">
+  <div class="col-md-4">
+  <h2 class="remove-top-margin">Your account</h2>
+  <ul>
+    <li><%= link_to "Change your email or passphrase", edit_email_or_passphrase_user_path(current_user) %></li>
+    <li><%= link_to "Sign out", destroy_user_session_path %></li>
+  </ul>
+  </div>
+  <div class="col-md-8">
+  <h2 class="remove-top-margin add-bottom-margin">Your Applications</h2>
+  <% if @applications_and_permissions.any? %>
+    <div class="list-group remove-bottom-margin">
+      <% @applications_and_permissions.each do |application, permissions| %>
+        <div class="list-group-item">
+          <h3 class="remove-top-margin add-label-margin">
+            <%= link_to_if application.home_uri, application.name, application.home_uri %>
+          </h3>
+          <div class="text-muted">
+          <% if application.description.present? %>
+            <%= application.description %>
+          <% end %>
+          <% if permissions.any? %>
+            <% if application.description.present? %>&bull; <% end %>
+            Roles: <em><%= current_user.permissions_for(application).map(&:humanize).to_sentence %></em>
+          <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="list-group-item no-content no-content-bordered">
+      You haven’t been assigned to<br />
+      any applications yet
+    </p>
+  <% end %>
+  </div>
+</div>
+</div>
