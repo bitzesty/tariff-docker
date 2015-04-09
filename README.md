@@ -66,6 +66,11 @@ We'll be using [docker](https://www.docker.com/) and [fig](http://www.fig.sh/) t
   ~/tariff-docker$ fig run signonotron2 bundle exec rake db:create db:migrate
   ```
 
+- Make sure we create tariff applications on doorkeeper
+  ```
+  ~/tariff-docker$ fig run signonotron2 bundle exec rake docker:tariff_applications
+  ```
+
 - Create a user
   ```
   ~/tariff-docker$ fig run signonotron2 bundle exec rake users:create name="docker" email="docker@bitzesty.com" applications="trade-tariff-admin,trade-tariff-backend"

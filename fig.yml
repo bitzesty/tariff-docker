@@ -25,10 +25,11 @@ backend:
     - "redis"
     - "elasticsearch"
     - "signonotron2"
-  hostname: "tariff-api.dev.gov.uk"
-  domainname: "tariff-api.dev.gov.uk"
+  hostname: "tariff-api.tariff.dev.bitzesty.com"
+  domainname: "tariff-api.tariff.dev.bitzesty.com"
   environment:
     RAILS_ENV: "development"
+    PLEK_SERVICE_SIGNON_URI: signon.tariff.dev.bitzesty.com
 
 admindb:
   image: "tutum/mysql:5.5"
@@ -48,10 +49,13 @@ admin:
     - "admindb"
     - "backend"
     - "signonotron2"
-  hostname: "tariff-admin.dev.gov.uk"
-  domainname: "tariff-admin.dev.gov.uk"
+  hostname: "tariff-admin.tariff.dev.bitzesty.com"
+  domainname: "tariff-admin.tariff.dev.bitzesty.com"
   environment:
     RAILS_ENV: "development"
+    TARIFF_API_HOST: tariff-api.tariff.dev.bitzesty.com
+    PLEK_SERVICE_TARIFF_API_URI: tariff-api.tariff.dev.bitzesty.com
+    PLEK_SERVICE_SIGNON_URI: signon.tariff.dev.bitzesty.com
 
 frontend:
   build: "./trade-tariff-frontend"
@@ -62,10 +66,12 @@ frontend:
     - "3017:3017"
   links:
     - "backend"
-  hostname: "tariff.dev.gov.uk"
-  domainname: "tariff.dev.gov.uk"
+  hostname: "tariff.tariff.dev.bitzesty.com"
+  domainname: "tariff.tariff.dev.bitzesty.com"
   environment:
     RAILS_ENV: "development"
+    TARIFF_API_HOST: tariff-api.tariff.dev.bitzesty.com
+    PLEK_SERVICE_TARIFF_API_URI: tariff-api.tariff.dev.bitzesty.com
 
 signonotron2db:
   image: "tutum/mysql:5.5"
@@ -85,7 +91,7 @@ signonotron2:
     - "3016:3016"
   links:
     - "signonotron2db"
-  hostname: "signon.dev.gov.uk"
-  domainname: "signon.dev.gov.uk"
+  hostname: "signon.tariff.dev.bitzesty.com"
+  domainname: "signon.tariff.dev.bitzesty.com"
   environment:
     RAILS_ENV: "development"
