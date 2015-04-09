@@ -5,12 +5,12 @@ gem 'rails', '3.2.18'
 gem 'kaminari', '0.16.1'
 gem 'bootstrap-kaminari-views', '0.0.5'
 gem 'alphabetical_paginate', '2.2.3'
-gem 'mysql2'
+gem "mysql2", "~> 0.3"
 gem 'govuk_admin_template', '1.4.2'
 
 gem 'airbrake', '3.1.15'
 gem 'plek', '1.7.0'
-gem 'json', '1.7.7'
+gem 'json', '1.8.2'
 gem 'whenever', '~> 0.9.4', require: false
 
 gem 'uuid'
@@ -31,7 +31,7 @@ gem 'ancestry', '2.0.0'
 
 gem 'gds-api-adapters', '7.11.0'
 gem 'statsd-ruby', '1.1.0'
-gem 'unicorn', '4.3.1'
+gem 'unicorn', "~> 4.8"
 gem 'sidekiq', '2.17.2'
 gem 'sidekiq-statsd', '0.1.2'
 
