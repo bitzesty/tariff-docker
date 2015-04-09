@@ -29,7 +29,7 @@ backend:
   domainname: "tariff-api.tariff.dev.bitzesty.com"
   environment:
     RAILS_ENV: "development"
-    PLEK_SERVICE_SIGNON_URI: signon.tariff.dev.bitzesty.com
+    PLEK_SERVICE_SIGNON_URI: "signon.tariff.dev.bitzesty.com:3016"
 
 admindb:
   image: "tutum/mysql:5.5"
@@ -55,7 +55,7 @@ admin:
     RAILS_ENV: "development"
     TARIFF_API_HOST: tariff-api.tariff.dev.bitzesty.com
     PLEK_SERVICE_TARIFF_API_URI: tariff-api.tariff.dev.bitzesty.com
-    PLEK_SERVICE_SIGNON_URI: signon.tariff.dev.bitzesty.com
+    PLEK_SERVICE_SIGNON_URI: "signon.tariff.dev.bitzesty.com:3016"
 
 frontend:
   build: "./trade-tariff-frontend"
@@ -91,7 +91,7 @@ signonotron2:
     - "3016:3016"
   links:
     - "signonotron2db"
-  hostname: "signon.tariff.dev.bitzesty.com"
-  domainname: "signon.tariff.dev.bitzesty.com"
+  hostname: "signon.tariff.dev.bitzesty.com:3016"
+  domainname: "signon.tariff.dev.bitzesty.com:3016"
   environment:
     RAILS_ENV: "development"
