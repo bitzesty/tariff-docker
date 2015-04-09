@@ -56,7 +56,7 @@ TradeTariffAdmin::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Host for Trade Tariff API endpoint
-  config.api_host = "http://tariff-api.dev.gov.uk:3018"
+  config.api_host = ENV["TARIFF_API_HOST"] || "http://tariff-api.dev.gov.uk:3018"
 
   config.eager_load = true
 
