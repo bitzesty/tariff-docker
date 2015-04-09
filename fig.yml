@@ -91,7 +91,7 @@ signonotron2:
     - "3016:3016"
   links:
     - "signonotron2db"
-  hostname: "signon.tariff.dev.bitzesty.com:3016"
-  domainname: "signon.tariff.dev.bitzesty.com:3016"
+  hostname: "signon.tariff.dev.bitzesty.com"
+  domainname: "signon.tariff.dev.bitzesty.com"
   environment:
     RAILS_ENV: "development"
