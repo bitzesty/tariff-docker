@@ -70,4 +70,5 @@ group :test do
   gem 'simplecov-rcov', '0.2.3'
   gem 'ci_reporter', '1.7.0'
   gem 'timecop', '0.7.1'
+  gem 'minitest', '4.3.2'
 end
