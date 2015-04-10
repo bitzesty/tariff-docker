@@ -70,7 +70,7 @@ frontend:
     TARIFF_API_HOST: "http://tariff-api.tariff.dev.bitzesty.com:3018"
     PLEK_SERVICE_TARIFF_API_URI: "http://tariff-api.tariff.dev.bitzesty.com:3018"
 
-signonotron2db:
+signondb:
   image: "tutum/mysql:5.5"
   ports:
     - "3306"
@@ -87,7 +87,9 @@ signonotron2:
   ports:
     - "3016:3016"
   links:
-    - "signonotron2db"
+    - "signondb"
+    - "redis"
   hostname: "signon.tariff.dev.bitzesty.com"
   environment:
     RAILS_ENV: "development"
+    PLEK_SERVICE_SIGNON_URI: "http://signon.tariff.dev.bitzesty.com:3016"
