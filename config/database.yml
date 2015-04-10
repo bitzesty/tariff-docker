@@ -11,11 +11,11 @@ development: &default
   pool: 5
   username: signonotron2
   password: signonotron2
-  <% if ENV['SIGNONOTRON2DB_1_PORT_3306_TCP_ADDR'].present? %>
-  host: <%= ENV['SIGNONOTRON2DB_1_PORT_3306_TCP_ADDR'] %>
+  <% if ENV['SIGNONDB_1_PORT_3306_TCP_ADDR'].present? %>
+  host: <%= ENV['SIGNONDB_1_PORT_3306_TCP_ADDR'] %>
   <% end %>
-  <% if ENV['SIGNONOTRON2DB_1_PORT_3306_TCP_PORT'].present? %>
-  port: <%= ENV['SIGNONOTRON2DB_1_PORT_3306_TCP_PORT'] %>
+  <% if ENV['SIGNONDB_1_PORT_3306_TCP_PORT'].present? %>
+  port: <%= ENV['SIGNONDB_1_PORT_3306_TCP_PORT'] %>
   <% end %>
 
 # Warning: The database defined as "test" will be erased and
@@ -33,3 +33,6 @@ production:
   pool: 5
   username: halberd
   password:
+
+docker:
+  <<: *default
