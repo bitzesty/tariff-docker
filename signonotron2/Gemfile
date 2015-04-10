@@ -67,3 +67,5 @@ group :test do
   gem 'ci_reporter', '1.7.0'
   gem 'timecop', '0.7.1'
 end
+
+gem "foreman"
