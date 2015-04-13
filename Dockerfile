@@ -34,3 +34,8 @@ WORKDIR /trade-tariff-backend
 # let's copy and bundle backend
 ADD . /trade-tariff-backend
 RUN bundle install
+
+# add tariff IPs
+RUN mkdir -p /etc/my_init.d
+ADD tariff_ips.sh /etc/my_init.d/tariff_ips.sh
+RUN chmod +x /etc/my_init.d/tariff_ips.sh
