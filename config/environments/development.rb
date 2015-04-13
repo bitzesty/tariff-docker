@@ -15,7 +15,7 @@ Signonotron2::Application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => URI.parse(Plek.current.find('signon')).host }
+  config.action_mailer.default_url_options = { :host => Plek.current.find('signon') }
   config.action_mailer.smtp_settings = { enable_starttls_auto: false  }
 
   # Print deprecation notices to the Rails logger
