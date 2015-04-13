@@ -22,6 +22,9 @@ RUN apt-get install -qqy libmysqlclient-dev
 # install mysql-client (will be used by `db:create` task)
 RUN apt-get install -qqy mysql-client
 
+# install postfix
+RUN apt-get -qq upgrade && apt-get -qqy install postfix
+
 # clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
