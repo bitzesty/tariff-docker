@@ -1,4 +1,6 @@
 #!/bin/bash
+service postfix start
+
 export RAILS_ENV=docker
 bundle install
 bundle exec rake docker:tariff_applications
