@@ -46,6 +46,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.7)
+    airbrake (4.1.0)
+      builder
+      multi_json
     arel (6.0.0)
     brakeman (3.0.2)
       erubis (~> 2.6)
@@ -340,6 +343,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable
+  airbrake (~> 4.1)
   brakeman (~> 3.0.2)
   bundler-audit
   capistrano (~> 3.4)
