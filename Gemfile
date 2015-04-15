@@ -5,21 +5,23 @@ gem 'rails', '3.2.18'
 gem 'kaminari', '0.16.1'
 gem 'bootstrap-kaminari-views', '0.0.5'
 gem 'alphabetical_paginate', '2.2.3'
-gem 'mysql2'
+gem "mysql2", "~> 0.3"
 gem 'govuk_admin_template', '1.4.2'
 
 gem 'airbrake', '3.1.15'
 gem 'plek', '1.7.0'
-gem 'json', '1.7.7'
+gem 'json', '1.8.2'
 gem 'whenever', '~> 0.9.4', require: false
 
 gem 'uuid'
+
+gem 'strong_parameters'
 
 # Gems used to provide Authentication and Authorization services.
 gem 'devise', '2.2.5'
 gem 'devise_invitable', '1.1.5'
 gem 'devise-encryptable', '0.1.1'
-gem 'devise_security_extension', '0.7.2', git: "https://github.com/alphagov/devise_security_extension.git", branch: "graceful_return_to_behaviour"
+gem 'devise_security_extension', '0.7.2', git: "https://github.com/alphagov/devise_security_extension.git", branch: "restrict-password-params"
 gem 'devise_zxcvbn', '1.1.1'
 gem 'devise-async', '0.8.0'
 gem 'pundit', '0.3.0'
@@ -29,7 +31,7 @@ gem 'ancestry', '2.0.0'
 
 gem 'gds-api-adapters', '7.11.0'
 gem 'statsd-ruby', '1.1.0'
-gem 'unicorn', '4.3.1'
+gem 'unicorn', "~> 4.8"
 gem 'sidekiq', '2.17.2'
 gem 'sidekiq-statsd', '0.1.2'
 
@@ -43,6 +45,8 @@ end
 
 group :development do
   gem 'quiet_assets'
+  # SQLite is needed only for signon to be run as part of gds-sso's test suite
+  gem 'sqlite3'
 end
 
 group :development, :test do
@@ -66,6 +70,7 @@ group :test do
   gem 'simplecov-rcov', '0.2.3'
   gem 'ci_reporter', '1.7.0'
   gem 'timecop', '0.7.1'
+  gem 'minitest', '4.3.2'
 end
 
 gem "foreman"
