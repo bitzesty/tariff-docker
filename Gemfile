@@ -8,7 +8,7 @@ gem "httparty"
 gem "hashie"
 gem "govspeak", "~> 3.3"
 
-gem "gds-api-adapters", "~> 18.0"
+gem "gds-api-adapters", "~> 18.3"
 gem "govuk_template", "0.12.0"
 gem "plek", "~> 1.8.1"
 gem "addressable"
@@ -39,7 +39,6 @@ group :development do
 end
 
 group :test do
-  gem "brakeman", "~> 3.0.2", require: false
   gem "webmock", "~> 1.20"
   gem "factory_girl_rails"
   gem "forgery"
