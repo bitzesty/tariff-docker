@@ -3,8 +3,8 @@ source "https://rubygems.org"
 gem "rails", "4.2.0"
 
 gem "mysql2", "~> 0.3"
-gem "sequel", "4.0.0"
-gem "sequel-rails", "0.5.1"
+gem "sequel", "~> 4.21"
+gem "sequel-rails", "~> 0.9"
 gem "her", "0.6.8"
 gem "pundit", "0.3.0"
 
@@ -15,7 +15,7 @@ gem "govspeak", "~> 3.3"
 gem "govuk_admin_template", "~> 2.1"
 
 gem "gds-sso", "~> 10.0"
-gem "gds-api-adapters", "~> 18.0"
+gem "gds-api-adapters", "~> 18.3"
 gem "plek", "~> 1.10"
 gem "addressable", "~> 2.3"
 
@@ -30,10 +30,10 @@ gem "responders", "~> 2.0"
 group :development, :test do
   gem "pry-rails"
   gem "bundler-audit"
+  gem "brakeman", "~> 3.0.0", require: false
 end
 
 group :test do
-  gem "brakeman", "~> 3.0.0", require: false
   gem "ci_reporter"
   gem "ci_reporter_rspec"
   gem "factory_girl_rails"
