@@ -17,7 +17,7 @@ gem "yajl-ruby", "~> 1.2", require: "yajl"
 gem "dalli", "~> 2.7.2"
 gem "builder", "~> 3.2"
 gem "plek", "~> 1.10"
-gem "gds-sso", "~> 10.0"
+gem "gds-sso", "~> 11.0"
 
 gem "unicorn", "~> 4.8"
 gem "curb", "0.8.6"
@@ -28,11 +28,12 @@ gem "whenever", "~> 0.9"
 gem "sentry-raven", git: "https://github.com/getsentry/raven-ruby.git"
 gem "aws-ses", "~> 0.6", require: "aws/ses" #used for sync emails
 gem "logstasher", "~> 0.6"
+gem "responders", "~> 2.0"
 
+gem "sass", "~> 3.4"
 gem "sass-rails", "~> 5.0"
 gem "therubyracer", "~> 0.12"
 gem "uglifier", "~> 2.7"
-gem "responders", "~> 2.0"
 gem "foreman", "~> 0.77"
 
 group :development do
